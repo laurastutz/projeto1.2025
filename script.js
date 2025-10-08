@@ -90,10 +90,13 @@ function selectAnswer(e){
 
     const selectBtn = e.target; 
     const isCorrect =  selectedBtn.dataset.id == correctAnswer.id;
-    if (isCorrect.classList.add("correct");
+    if (isCorrect){
+      selectBtn.classList.add("correct");
       score++;
-      
-    )
+    } else{
+      selectedBtn.classList.add("correct")
+    }
+
 }
 
 
