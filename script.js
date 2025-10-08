@@ -1,6 +1,6 @@
 const questions = [
    {
-     questions:"Qual é o maior animal do mundo?",
+     question:"Qual é o maior animal do mundo?",
      answers :[
       {id: 1, text:"Tubarão", correct:false },
       {id: 2, text:"baleia Azul", correct:true },
@@ -11,7 +11,7 @@ const questions = [
 
   ]
 [
-   { questions:"Que animal é conhecido por ter três corações??",
+   { question:"Que animal é conhecido por ter três corações??",
   answer:[
       {id: 1, text:"Polvo", correct:true },
       {id: 2, text:"Baleia", correct:false },
@@ -21,7 +21,7 @@ const questions = [
   },
 
 [
-  {questions:"Os flamingos nascem de que cor?",
+  {question:"Os flamingos nascem de que cor?",
   answer:[
       {id: 1, text:"Rosa", correct:false },
       {id: 2, text:"Amarelo", correct:false },
@@ -32,7 +32,7 @@ const questions = [
 
 
 [
-  { questions:"Qual animal é conhecido por ser o parente vivo mais próximo do T-Rex?",
+  { question:"Qual animal é conhecido por ser o parente vivo mais próximo do T-Rex?",
   answer:[
          {id: 1, text:"Iguana", correct:false },
          {id: 2, text:"Corvo", correct:false },
@@ -48,3 +48,57 @@ const nextButton = document.getElementById("next-btn");
 
 let currentQuestionIndex = 0;
 let score = 0
+
+function startQuiz(){
+    currentQuestionIndex = 0
+    socore = 0
+    nextButton.innerHTML =  "Próxima";
+    showQuestion();
+}
+  
+
+function resetState(){
+      nextButton.style.display = "none"
+      while(answerButtons.firstChild){
+        answerButtons.removeChild(answerButtons.firstChild)
+      }
+
+}
+
+
+function showQuestion(){
+  resetState();
+    let currentQuestion = questions[currentQuestionIndex]
+    let uestionNo = currentQuestion + 1;
+    questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+       
+
+    currentQuestion.answer.forEach ((answer) => {
+      const button = document.createElement("button");
+       button.innerHTML = answer.text;
+       button.dataset.id = answer.id;
+       button.classList.add("btn");
+       button.addEventListener("click",selectAnswer);
+       answerButtons.appendChild(button)
+    });
+  }
+
+
+function selectAnswer(e){
+    nswers = questions [currentQuestionIndex]. answers;
+    const correctAnswer = answers.filter((answer) => answer.correct == true)[0];
+
+    const selectBtn = e.target; 
+    const isCorrect =  selectedBtn.dataset.id == correctAnswer.id;
+    if (isCorrect.classList.add("correct");
+      score++;
+      
+    )
+}
+
+
+
+
+
+
+startQuiz();
