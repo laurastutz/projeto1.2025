@@ -94,14 +94,37 @@ function selectAnswer(e){
       selectBtn.classList.add("correct");
       score++;
     } else{
-      selectedBtn.classList.add("correct")
+      selectedBtn.classList.add("incorrect")
     }
 
+    Array.from(answerButtons.children).forEach((button) => {
+      button.disablad = true;
+    });
+
+  nextButton.style.display = "block";
+
+  }
+
+  function showScore{
+    resetState();
+  }
+function.handleNextButtom(){
+  currentQuestionIndex++;
+  if(currentQuestionIndex < question.length){
+    showQuestion()
+    } else{
+      showScore();
+    }
 }
 
+nextButton.addEventListener("click", () => {
+    if (currentQuestionIndex < question.length){
+      handleNextButtom()
+    } else {
+      startQuiz();
+    }
 
-
-
+})
 
 
 startQuiz();
